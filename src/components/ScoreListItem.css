@@ -1,0 +1,12 @@
+.ant-statistic-content-suffix {
+	font-size: 16px;
+    margin-top: 7px;
+    line-height: 30px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.ant-statistic-content {
+	display: flex;
+	justify-content: flex-end;
+	align-content: last baseline;
+}
