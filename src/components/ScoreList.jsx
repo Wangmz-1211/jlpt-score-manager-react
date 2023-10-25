@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getScoreListByUserId } from '../api/score.ts'
+import { getScoreListByUserId, createBlankScoreRecord } from '../api/score.ts'
 import ScoreListItem from './ScoreListItem.jsx'
-import { Row, Col, Card, Typography } from 'antd'
+import { Row, Col, Card, Typography, Modal, Input, message } from 'antd'
 import { PlusOutlined, UserOutlined } from '@ant-design/icons'
 import './ScoreList.css'
 import actions from '../store/actions'
 
 const { Title, Paragraph } = Typography
 function ScoreList(props) {
+	let [modalVisible, setModalVisible] = useState(false),
+		[modalLoading, setModalLoading] = useState(false),
+		[title, setTitle] = useState('')
 	useEffect(() => {
 		const fetchScoreList = async () => {
 			const list = await getScoreListByUserId()
@@ -21,14 +24,16 @@ function ScoreList(props) {
 	return (
 		<div className='score-list-box'>
 			<Row gutter={[30, 30]}>
-				{!props.score.scoreRecords
+				{props.score.scoreRecords
 					? props.score.scoreRecords.map((rec) => {
 							if (rec._id === '') return null
 							return (
 								<Col key={rec._id}>
 									<ScoreListItem
 										key={rec._id}
+										record={rec}
 										totalScore={rec.total_score}
+										title={rec.title}
 									/>
 								</Col>
 							)
@@ -53,7 +58,13 @@ function ScoreList(props) {
 					</Typography>
 				) : (
 					<Col>
-						<Card bordered={false} style={{ width: 246 }}>
+						<Card
+							bordered={false}
+							style={{ width: 246 }}
+							onClick={() => {
+								setModalVisible(true)
+							}}
+						>
 							<div
 								style={{
 									height: 63,
@@ -75,6 +86,51 @@ function ScoreList(props) {
 					</Col>
 				)}
 			</Row>
+			<Modal
+				title='Create score record'
+				open={modalVisible}
+				confirmLoading={modalLoading}
+				onCancel={() => {
+					setTitle('')
+					setModalVisible(false)
+				}}
+				onOk={async () => {
+					if (title === '') {
+						message.error('Please input the title!', 2)
+						return
+					}
+					console.log(title)
+					setModalLoading(true)
+					const blankRecord = await createBlankScoreRecord(title)
+					// insert the new blank record to old results
+					const newRecordList = [
+						...props.score.scoreRecords,
+						blankRecord,
+					]
+					props.setScoreRecords(newRecordList)
+					setTitle('')
+					setModalLoading(false)
+					setModalVisible(false)
+				}}
+			>
+				<span
+					style={{
+						display: 'inline-block',
+						width: 100,
+						textAlign: 'right',
+						paddingRight: 20,
+					}}
+				>
+					title
+				</span>
+				<Input
+					style={{ width: 300 }}
+					value={title}
+					onChange={(e) => {
+						setTitle(e.target.value)
+					}}
+				/>
+			</Modal>
 		</div>
 	)
 }

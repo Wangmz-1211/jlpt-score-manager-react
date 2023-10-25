@@ -292,7 +292,7 @@ export const loginStatus = async () => {
 			method: 'POST',
 			credentials: 'include',
 		})
-		if (res.status == 200) return await res.json() //user information
+		if (res.status === 200) return await res.json() //user information
 		return
 	} catch (error) {
 		console.log('[API-authentication-login-check]', error)
