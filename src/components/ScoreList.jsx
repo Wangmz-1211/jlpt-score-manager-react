@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getScoreListByUserId } from '../api/score.ts'
 import ScoreListItem from './ScoreListItem.jsx'
 import { Row, Col } from 'antd'
+import './ScoreList.css'
 
 function ScoreList() {
 	let [scoreList, setScoreList] = useState([])

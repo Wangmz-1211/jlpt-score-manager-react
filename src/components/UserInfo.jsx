@@ -4,18 +4,14 @@ import './UserInfo.css'
 const items = [
 	{
 		key: 'username',
-		label: (
-			<b>username</b>
-		),
-        disabled: true,
+		label: <b>username</b>,
+		disabled: true,
 	},
-    {
-        key: 'logout',
-        label: (
-            <span>logout</span>
-        ),
-        danger: true
-    }
+	{
+		key: 'logout',
+		label: <span>logout</span>,
+		danger: true,
+	},
 ]
 
 function UserInfo() {

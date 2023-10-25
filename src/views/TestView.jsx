@@ -1,14 +1,12 @@
 import React from 'react'
-import ScoreListItem from '../components/ScoreListItem'
 import ScoreList from '../components/ScoreList'
-import { Typography } from 'antd'
-
-const { Title } = Typography
+import LoginAsFoo from '../components/LoginAsFoo'
 
 function TestView() {
 	return (
 		<div>
-			<Title level={2}>Test View</Title>
+			This is a view for development use only.
+			<LoginAsFoo></LoginAsFoo>
 			<ScoreList></ScoreList>
 		</div>
 	)
