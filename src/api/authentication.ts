@@ -46,6 +46,7 @@ export const register = async (
 			return await res.json()
 		} else {
 			const info = await res.text()
+			message.error(info, 2)
 			throw new Error(info)
 		}
 	} catch (error) {

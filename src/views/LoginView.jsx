@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { Typography, Button, Form, Input } from 'antd'
-import './LoginView.css'
+import { Typography, Button, Form, Input, Space } from 'antd'
+// import './LoginView.css'
 import { login } from '../api/authentication.ts'
 import actions from '../store/actions'
 
@@ -23,6 +23,7 @@ export const LoginView = (props) => {
 				level={3}
 				style={{
 					textAlign: 'center',
+					paddingTop: 20
 				}}
 			>
 				WELCOME
@@ -31,7 +32,7 @@ export const LoginView = (props) => {
 				colon={false}
 				labelCol={{ span: 8 }}
 				labelAlign='left'
-				style={{ maxWidth: 500, marginTop: 20 }}
+				style={{ maxWidth: 520, marginTop: 20 }}
 				wrapperCol={{ span: 16 }}
 				onFinish={handleFinish}
 			>
@@ -41,15 +42,23 @@ export const LoginView = (props) => {
 				<Form.Item name='password' label='password'>
 					<Input.Password></Input.Password>
 				</Form.Item>
-				<Form.Item
-					style={{
-						display: 'flex',
-						justifyContent: 'right',
-					}}
-				>
-					<Button type='primary' htmlType='submit'>
-						LOGIN
-					</Button>
+				<Form.Item>
+					<Space
+						style={{
+							display: 'flex',
+							justifyContent: 'right',
+							width: 311
+						}}
+					>
+						<Button style={{ width: 100 }} onClick={()=> navigate('/register')}>REGISTER</Button>
+						<Button
+							style={{ width: 100 }}
+							type='primary'
+							htmlType='submit'
+						>
+							LOGIN
+						</Button>
+					</Space>
 				</Form.Item>
 			</Form>
 		</div>
