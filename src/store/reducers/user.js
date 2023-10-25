@@ -5,10 +5,10 @@ const initialState = {
 	_v: 0,
 }
 
-const userReducer = (state = initialState, { payload }) => {
-	console.log(payload)
+const userReducer = (state = initialState, { type, payload }) => {
+	const pattern = /USER*/
+	if (!pattern.test(type)) return state
 	state = { ...state, ...payload }
-	console.log(state)
 	return state
 }
 

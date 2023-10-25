@@ -1,8 +1,15 @@
 const initialState = {
-	scoreRecords: [],
+	scoreRecords: [
+		{
+			_id: ''
+		}
+	],
 }
 
-const scoreReducer = (state = initialState, { payload }) => {
+const scoreReducer = (state = initialState, { type, payload }) => {
+	const pattern = /SCORE*/
+	if(!pattern.test(type)) return state
+	state = {...state}
 	state.scoreRecords = payload
 	return state
 }
