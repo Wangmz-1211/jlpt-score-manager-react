@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getScoreListByUserId } from '../api/score.ts'
 import ScoreListItem from './ScoreListItem.jsx'
-import { Row, Col, Card, Statistic } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import { Row, Col, Card, Typography } from 'antd'
+import { PlusOutlined, UserOutlined } from '@ant-design/icons'
 import './ScoreList.css'
 import actions from '../store/actions'
 
-
+const { Title, Paragraph } = Typography
 function ScoreList(props) {
 	useEffect(() => {
 		const fetchScoreList = async () => {
@@ -20,7 +21,7 @@ function ScoreList(props) {
 	return (
 		<div className='score-list-box'>
 			<Row gutter={[30, 30]}>
-				{props.score.scoreRecords
+				{!props.score.scoreRecords
 					? props.score.scoreRecords.map((rec) => {
 							if (rec._id === '') return null
 							return (
@@ -33,27 +34,45 @@ function ScoreList(props) {
 							)
 					  })
 					: null}
-				<Col>
-					<Card bordered={false} style={{ width: 246 }}>
-						<div
-							style={{
-								height: 63,
-								display: 'flex',
-								flexDirection: 'column',
-								alignContent: 'center',
-							}}
-						>
-							<div className='title'>Create a new record</div>
-							<div className='icon'></div>
-							<PlusOutlined
+				{props.user._id === '' ? (
+					// todo: register page
+					<Typography>
+						<Title>You should login first!</Title>
+						<Paragraph>
+							Please click on the <UserOutlined /> icon the the
+							top right of the page, then you will be navigated to
+							the <Link to='/login'>login</Link> page.
+						</Paragraph>
+						<Paragraph>
+							If you do not have an account yet, you could find a
+							register button on the{' '}
+							<Link to='/login'>login</Link> page. Or you could
+							just click the register link here.
+						</Paragraph>
+					</Typography>
+				) : (
+					<Col>
+						<Card bordered={false} style={{ width: 246 }}>
+							<div
 								style={{
-									fontSize: 32,
-									color: 'rgba(0,0,0,0.45)',
+									height: 63,
+									display: 'flex',
+									flexDirection: 'column',
+									alignContent: 'center',
 								}}
-							/>
-						</div>
-					</Card>
-				</Col>
+							>
+								<div className='title'>Create a new record</div>
+								<div className='icon'></div>
+								<PlusOutlined
+									style={{
+										fontSize: 32,
+										color: 'rgba(0,0,0,0.45)',
+									}}
+								/>
+							</div>
+						</Card>
+					</Col>
+				)}
 			</Row>
 		</div>
 	)
