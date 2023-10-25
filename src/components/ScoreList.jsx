@@ -35,7 +35,6 @@ function ScoreList(props) {
 					  })
 					: null}
 				{props.user._id === '' ? (
-					// todo: register page
 					<Typography>
 						<Title>You should login first!</Title>
 						<Paragraph>
@@ -44,10 +43,12 @@ function ScoreList(props) {
 							the <Link to='/login'>login</Link> page.
 						</Paragraph>
 						<Paragraph>
-							If you do not have an account yet, you could find a
-							register button on the{' '}
+							If you do not have an account yet, you could find
+							a&nbsp;
+							<Link to='/register'>register</Link> button on the{' '}
 							<Link to='/login'>login</Link> page. Or you could
-							just click the register link here.
+							just click the <Link to='/register'>register</Link>{' '}
+							link here.
 						</Paragraph>
 					</Typography>
 				) : (
