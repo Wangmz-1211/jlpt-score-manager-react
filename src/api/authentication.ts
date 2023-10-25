@@ -1,3 +1,4 @@
+import { message } from 'antd'
 /**
  * *This file contains several api functions related to authentication service.
  */
@@ -77,6 +78,7 @@ export const login = async (email: string, password: string) => {
 			return await res.json()
 		} else {
 			const info = await res.text()
+			message.error(info)
 			throw new Error(info)
 		}
 	} catch (error) {

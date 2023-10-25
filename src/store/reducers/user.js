@@ -6,7 +6,9 @@ const initialState = {
 }
 
 const userReducer = (state = initialState, { payload }) => {
+	console.log(payload)
 	state = { ...state, ...payload }
+	console.log(state)
 	return state
 }
 
