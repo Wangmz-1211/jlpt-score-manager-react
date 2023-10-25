@@ -14,7 +14,7 @@ export const LoginView = (props) => {
 		const userInfo = await login(v.email, v.password)
 		if (!userInfo) return
 		props.setUser(userInfo)
-        navigate('/')
+		navigate('/')
 	}
 
 	return (
@@ -62,6 +62,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = { ...actions.user }
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+export default connect(mapStateToProps, actions.user)(LoginView)

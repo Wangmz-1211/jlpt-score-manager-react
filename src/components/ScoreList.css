@@ -2,3 +2,11 @@
     width: 800px;
     padding-top: 20px;
 }
+.anticon {
+    justify-content: center;
+    height: 37px;
+}
+
+.title {
+    color: rgba(0 , 0, 0, 0.45)
+}
