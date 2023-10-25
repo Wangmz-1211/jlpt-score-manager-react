@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Typography, Button, Form, Input } from 'antd'
 import './LoginView.css'
 import { login } from '../api/authentication.ts'
@@ -8,13 +9,14 @@ import actions from '../store/actions'
 const { Title } = Typography
 
 export const LoginView = (props) => {
-
+	const navigate = useNavigate()
 	const handleFinish = async (v) => {
 		const userInfo = await login(v.email, v.password)
 		if (!userInfo) return
 		props.setUser(userInfo)
+        navigate('/')
 	}
-    
+
 	return (
 		<div className='login-view-box'>
 			<Title

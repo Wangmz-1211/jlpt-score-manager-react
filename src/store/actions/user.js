@@ -5,6 +5,18 @@ const userAction = {
 			payload: { ...userInfo },
 		}
 	},
+	clearUser() {
+		const blankUserSchema = {
+			_id: '',
+			email: '',
+			username: '',
+			_v: 0,
+		}
+		return {
+			type: 'USER_CLEAR',
+			payload: { ...blankUserSchema },
+		}
+	},
 }
 
 export default userAction
