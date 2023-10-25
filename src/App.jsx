@@ -11,7 +11,6 @@ import actions from './store/actions'
 
 const { Header, Content, Footer } = Layout
 const LoginView = lazy(() => import('./views/LoginView'))
-const TestView = lazy(() => import('./views/TestView'))
 const ScoreView = lazy(() => import('./views/ScoreView'))
 const SummaryView = lazy(() => import('./views/SummaryView'))
 const RegisterView = lazy(() => import('./views/RegisterView'))
@@ -50,7 +49,6 @@ function App(props) {
 							<Route path='/' element={<HomeView />} />
 							<Route path='/summary' element={<SummaryView />} />
 							<Route path='/score' element={<ScoreView />} />
-							<Route path='/test' element={<TestView />} />
 							<Route path='/login' element={<LoginView />} />
 							<Route path='/register' element={<RegisterView/>}></Route>
 							<Route

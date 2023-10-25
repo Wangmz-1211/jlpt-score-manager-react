@@ -8,7 +8,6 @@ function NavigateBar() {
             <NavLink className='nav-item' to='/'>HOME</NavLink>
             <NavLink className='nav-item' to='/summary'>SUMMARY</NavLink>
             <NavLink className='nav-item' to='/score'>SCORE</NavLink>
-            <NavLink className='nav-item' to='/test'>TEST</NavLink>
 		</div>
 	)
 }
