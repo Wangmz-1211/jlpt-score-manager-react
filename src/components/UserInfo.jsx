@@ -18,7 +18,6 @@ const items = [
 ]
 
 function UserInfo(props) {
-	console.log(props)
 	return (
 		<div className='user-info-box'>
 			{props._id === '' ? (
@@ -31,6 +30,7 @@ function UserInfo(props) {
 						src={
 							'http://wangmz-markdown.oss-cn-shanghai.aliyuncs.com/img/image-20231025145302312.png'
 						}
+						icon={<UserOutlined />}
 						size={48}
 					/>
 				</Dropdown>
