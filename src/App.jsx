@@ -58,7 +58,7 @@ function App(props) {
 						</Routes>
 					</Content>
 					<Footer style={{ textAlign: 'center' }}>
-						code by wangmz
+						✨ code by wangmz
 					</Footer>
 				</div>
 			</Suspense>

@@ -7,7 +7,7 @@ const { Title, Paragraph } = Typography
 function HomeView() {
 	return (
 		<div className='home-view-box'>
-			<Typography>
+			<Typography style={{paddingTop: 20}}>
 				<Title>Welcome to JLPT score manager</Title>
 				<Paragraph>
 					This is a project for my Japanese study, as well as react,

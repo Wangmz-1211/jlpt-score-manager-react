@@ -2,7 +2,7 @@
     width: 800px;
     padding-top: 20px;
 }
-.anticon {
+.ant-card-body .anticon {
     justify-content: center;
     height: 37px;
 }
