@@ -299,3 +299,31 @@ export const loginStatus = async () => {
 		return
 	}
 }
+
+/**
+ * Change a user's own username.
+ * @param email the user's email, for checking identity
+ * @param username the new desired username
+ * @returns
+ */
+export const changeUsername = async (email: string, username: string) => {
+	try {
+		const res = await fetch(SERVER + '/api/user/change-username', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			credentials: 'include',
+			body: JSON.stringify({
+				email,
+				username,
+			}),
+		})
+		if (res.status === 200) return
+		const info = await res.text()
+		throw new Error(info)
+	} catch (error) {
+		console.error('[API-authentication-change-username] ', error)
+		return
+	}
+}
