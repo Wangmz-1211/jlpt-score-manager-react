@@ -1,0 +1,29 @@
+.user-view-box {
+	display: flex;
+	flex-direction: row;
+    justify-content: left;
+    height: 460px;
+}
+.user-view-sider {
+    width: 200px;
+    height: 460px;
+    padding: 0 20px;
+    margin: 20px 0;
+    border-right: 1px solid #eee;
+}
+.user-view-content {
+    width: 700px;
+    height: 500px;
+    padding-top: 40px;
+    padding-right: 20px;
+}
+.user-view-username {
+    width: 160px;
+    padding-top: 15px;
+    line-height: 30px;
+    font-size: 30px;
+    text-align: center;
+}
+.user-view-context .ant-row {
+    justify-content: right;
+}

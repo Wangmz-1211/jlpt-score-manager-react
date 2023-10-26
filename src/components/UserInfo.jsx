@@ -24,6 +24,10 @@ function UserInfo(props) {
 			disabled: true,
 		},
 		{
+			key: 'user center',
+			label: <Link  to='/user'>user center</Link>
+		},
+		{
 			key: 'logout',
 			label: (
 				<span onClick={() => handleLogout(props.clearUser, navigate)}>

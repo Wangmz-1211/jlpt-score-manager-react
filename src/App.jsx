@@ -14,6 +14,7 @@ const LoginView = lazy(() => import('./views/LoginView'))
 const ScoreView = lazy(() => import('./views/ScoreView'))
 const SummaryView = lazy(() => import('./views/SummaryView'))
 const RegisterView = lazy(() => import('./views/RegisterView'))
+const UserView = lazy(() => import('./views/UserView'))
 
 function App(props) {
 	useEffect(() => {
@@ -50,7 +51,11 @@ function App(props) {
 							<Route path='/summary' element={<SummaryView />} />
 							<Route path='/score' element={<ScoreView />} />
 							<Route path='/login' element={<LoginView />} />
-							<Route path='/register' element={<RegisterView/>}></Route>
+							<Route path='/user' element={<UserView />} />
+							<Route
+								path='/register'
+								element={<RegisterView />}
+							></Route>
 							<Route
 								path='*'
 								element={<Navigate to='/' replace={true} />}
