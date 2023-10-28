@@ -23,8 +23,15 @@ function ScoreList(props) {
 			<Row gutter={[30, 30]}>
 				<Suspense
 					fallback={
-						<Card bordered={false} style={{ width: 246, height: 112 }}>
-							<Skeleton.Button active block style={{height: 64}}></Skeleton.Button>
+						<Card
+							bordered={false}
+							style={{ width: 246, height: 112 }}
+						>
+							<Skeleton.Button
+								active
+								block
+								style={{ height: 64 }}
+							></Skeleton.Button>
 						</Card>
 					}
 				>
@@ -48,7 +55,9 @@ function ScoreList(props) {
 					<ScoreListWithoutLogin />
 				) : (
 					<Col>
-						<ScoreRecordCreateCard />
+						<Suspense>
+							<ScoreRecordCreateCard />
+						</Suspense>
 					</Col>
 				)}
 			</Row>
