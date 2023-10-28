@@ -15,7 +15,12 @@ function ScoreList(props) {
 			const list = await getScoreListByUserId()
 			props.setScoreRecords(list ? list : [{ _id: '' }])
 		}
-		fetchScoreList()
+		if (
+			!props.scoreRecords ||
+			props.scoreRecords.length === 0 ||
+			props.scoreRecords[0]._id === ''
+		)
+			fetchScoreList()
 	}, [])
 
 	return (
