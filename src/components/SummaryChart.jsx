@@ -27,7 +27,8 @@ const options = {
 	responsive: true,
 	scales: {
 		y: {
-			suggestedMax: 180
+			suggestedMax: 180,
+			suggestedMin: 0
 		},
 	},
 	plugins: {
