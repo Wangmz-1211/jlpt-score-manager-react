@@ -8,6 +8,7 @@ import UserInfo from './components/UserInfo'
 import HomeView from './views/HomeView'
 import { connect } from 'react-redux'
 import actions from './store/actions'
+import Loading from './views/Loading'
 
 const { Header, Content, Footer } = Layout
 const LoginView = lazy(() => import('./views/LoginView'))
@@ -28,24 +29,24 @@ function App(props) {
 
 	return (
 		<HashRouter>
-			<Suspense>
-				<div className='app'>
-					<Header
-						style={{
-							display: 'flex',
-							justifyContent: 'space-between',
-						}}
-					>
-						<NavigateBar></NavigateBar>
-						<UserInfo></UserInfo>
-					</Header>
-					<Content
-						style={{
-							height: 500,
-							display: 'flex',
-							justifyContent: 'center',
-						}}
-					>
+			<div className='app'>
+				<Header
+					style={{
+						display: 'flex',
+						justifyContent: 'space-between',
+					}}
+				>
+					<NavigateBar></NavigateBar>
+					<UserInfo></UserInfo>
+				</Header>
+				<Content
+					style={{
+						height: 500,
+						display: 'flex',
+						justifyContent: 'center',
+					}}
+				>
+					<Suspense fallback={<Loading />}>
 						<Routes>
 							<Route path='/' element={<HomeView />} />
 							<Route path='/summary' element={<SummaryView />} />
@@ -61,12 +62,12 @@ function App(props) {
 								element={<Navigate to='/' replace={true} />}
 							/>
 						</Routes>
-					</Content>
-					<Footer style={{ textAlign: 'center' }}>
-						✨ code by wangmz
-					</Footer>
-				</div>
-			</Suspense>
+					</Suspense>
+				</Content>
+				<Footer style={{ textAlign: 'center' }}>
+					✨ code by wangmz
+				</Footer>
+			</div>
 		</HashRouter>
 	)
 }
