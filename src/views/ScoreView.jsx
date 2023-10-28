@@ -1,8 +1,12 @@
 import React from 'react'
 import ScoreList from '../components/ScoreList'
 import './ScoreView.css'
+import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-function ScoreView() {
+function ScoreView(props) {
+	const navigate = useNavigate()
+	if(props.user._id === '') navigate('/noUser')
 	return (
 		<div>
 			<ScoreList></ScoreList>
@@ -10,4 +14,4 @@ function ScoreView() {
 	)
 }
 
-export default ScoreView
+export default connect((state) => state, null)(ScoreView)

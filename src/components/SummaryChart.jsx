@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { lazy, useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
 import { getScoreListByUserId } from '../api/score.ts'
 import actions from '../store/actions'
@@ -14,6 +14,8 @@ import {
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 
+const NoUserLogin = lazy(() => import('../views/NoUserLoginView.jsx'))
+
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
@@ -28,7 +30,7 @@ const options = {
 	scales: {
 		y: {
 			suggestedMax: 180,
-			suggestedMin: 0
+			suggestedMin: 0,
 		},
 	},
 	plugins: {
@@ -51,15 +53,15 @@ export const SummaryChart = (props) => {
 			props.setScoreRecords(list ? list : [{ _id: '' }])
 		}
 		if (
-			!props.scoreRecords ||
-			props.scoreRecords.length === 0 ||
-			props.scoreRecords[0]._id === ''
+			!props.score.scoreRecords ||
+			props.score.scoreRecords.length === 0 ||
+			props.score.scoreRecords[0]._id === ''
 		)
 			fetchScoreList()
 	}, [])
 
 	const data = useMemo(() => {
-		const filter = props.scoreRecords.filter((record) => {
+		const filter = props.score.scoreRecords.filter((record) => {
 			const N1pattern = /N1-20[1-2][0-9]-(07|12)/
 			const N2pattern = /N2-20[1-2][0-9]-(07|12)/
 			return (
@@ -121,4 +123,4 @@ export const SummaryChart = (props) => {
 	)
 }
 
-export default connect((state) => state.score, actions.score)(SummaryChart)
+export default connect((state) => state, actions.score)(SummaryChart)

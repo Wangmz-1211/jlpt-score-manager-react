@@ -6,7 +6,6 @@ import './ScoreList.css'
 import actions from '../store/actions'
 
 const ScoreListItem = lazy(() => import('./ScoreListItem'))
-const ScoreListWithoutLogin = lazy(() => import('./ScoreListWithoutLogin'))
 const ScoreRecordCreateCard = lazy(() => import('./ScoreRecordCreateCard'))
 
 function ScoreList(props) {
@@ -56,15 +55,11 @@ function ScoreList(props) {
 						  })
 						: null}
 				</Suspense>
-				{props.user._id === '' ? (
-					<ScoreListWithoutLogin />
-				) : (
-					<Col>
-						<Suspense>
-							<ScoreRecordCreateCard />
-						</Suspense>
-					</Col>
-				)}
+				<Col>
+					<Suspense>
+						<ScoreRecordCreateCard />
+					</Suspense>
+				</Col>
 			</Row>
 		</div>
 	)
