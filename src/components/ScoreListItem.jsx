@@ -1,4 +1,4 @@
-import React, { lazy, useState, Suspense } from 'react'
+import React, { lazy, useState } from 'react'
 import { Card, Statistic } from 'antd'
 import './ScoreListItem.css'
 import { connect } from 'react-redux'
@@ -27,15 +27,13 @@ function ScoreListItem(props) {
 				></Statistic>
 			</Card>
 			{/* score record detail Modal */}
-			<Suspense>
-				<ScoreRecordDetails
-					record={record}
-					modalVisible={modalVisible}
-					modalLoading={modalLoading}
-					setModalVisible={setModalVisible}
-					setModalLoading={setModalLoading}
-				/>
-			</Suspense>
+			<ScoreRecordDetails
+				record={record}
+				modalVisible={modalVisible}
+				modalLoading={modalLoading}
+				setModalVisible={setModalVisible}
+				setModalLoading={setModalLoading}
+			/>
 		</React.Fragment>
 	)
 }
