@@ -27,12 +27,12 @@ ChartJS.register(
 )
 const options = {
 	responsive: true,
-	scales: {
-		y: {
-			suggestedMax: 180,
-			suggestedMin: 0,
-		},
-	},
+	// scales: {
+	// 	y: {
+	// 		suggestedMax: 180,
+	// 		suggestedMin: 0,
+	// 	},
+	// },
 	plugins: {
 		legend: {
 			position: 'top',
@@ -114,7 +114,7 @@ export const SummaryChart = (props) => {
 				},
 			],
 		}
-	}, [props.scoreRecords])
+	}, [props.score.scoreRecords])
 
 	return (
 		<div>
