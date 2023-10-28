@@ -86,4 +86,4 @@ function ScoreRecordCreateCard(props) {
 	)
 }
 
-export default connect(null, actions.score)(ScoreRecordCreateCard)
+export default connect(state => state, actions.score)(ScoreRecordCreateCard)
