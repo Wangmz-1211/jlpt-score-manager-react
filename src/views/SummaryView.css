@@ -1,0 +1,8 @@
+.summary-view-box {
+    width: 800px;
+}
+canvas {
+    margin-top: 50px;
+    width: 800px;
+    height: 400px;
+}

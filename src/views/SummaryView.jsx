@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { lazy } from 'react'
+import './SummaryView.css'
 
+const SummaryChart = lazy(() => import('../components/SummaryChart'))
 function SummaryView() {
 	return (
-		<div className='summary-view-box'>This page is under development.</div>
+		<React.Fragment>
+			<div className='summary-view-box'>
+				<SummaryChart level='N2'></SummaryChart>
+			</div>
+		</React.Fragment>
 	)
 }
 
