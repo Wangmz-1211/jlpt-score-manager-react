@@ -4,7 +4,7 @@ import { message } from 'antd'
  */
 
 /* server related setting */
-const host = 'http://localhost'
+const host = 'http://wangmz.click'
 const port = 8081
 const SERVER = host + ':' + port
 
